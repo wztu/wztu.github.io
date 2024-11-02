@@ -1,6 +1,6 @@
 //configObj
 export default {
-  token: "secrets.MY_GITHUB_TOKEN",
+  token: "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",
   userAndRepo: "",
   branch: "master",
   path: "/img",
