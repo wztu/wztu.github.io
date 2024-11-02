@@ -1,7 +1,7 @@
 //configObj
 export default {
   token: "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",
-  userAndRepo: "tvwz/img",
+  userAndRepo: "",
   branch: "master",
   path: "/img",
   dns: "",
