@@ -123,7 +123,7 @@
     <img src="" id="img_pre_show" />
     <div id="canvas_box" style="display:none"></div>
     <div id="upload_hint">
- 
+      <i class="fa fa-cloud-upload" aria-hidden="true"></i>
       <br />
       <p>点击选择<b>或者</b>拖拽到这里<b>或者</b>在此页面粘贴</p>
     </div>
@@ -136,24 +136,5 @@
   <!-- 资源放置 -->
   <div id="resource_box" class="resource_box"></div>
 
-    <script>
-        document.getElementById('upload_button').addEventListener('click', function() {
-            document.getElementById('file_input').click();
-        });
-
-        document.getElementById('file_input').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('img_pre_show').src = e.target.result;
-                    document.getElementById('img_pre_show').style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    </script>
 </body>
 </html>
-
-
