@@ -1,7 +1,7 @@
 //configObj
 export default {
-  token: "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",
-  userAndRepo: "",
+  token: "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",
+  userAndRepo: "wztu/wztu.github.io",
   branch: "master",
   path: "/img",
   dns: "",
