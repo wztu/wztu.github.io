@@ -20,7 +20,26 @@
 
   <script src="js/date-format.js"></script>
   <script src="js/modules/pc_mobile.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        #upload_button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        #upload_button i {
+            margin-right: 10px;
+        }
+        #file_input {
+            display: none;
+        }
+    </style>
   <script type="module">
     // 导入配置
     import configObj from "./js/modules/config.js";
@@ -99,50 +118,42 @@
     </div>
   </div>
 
-    <div id="choose_img">
-        <input type="file" name="content" id="myFile" multiple style="display: none" />
-        <img id="img_pre_show" />
-        <div id="canvas_box" style="display:none"></div>
-        <div id="upload_hint">
-            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-            <br />
-            <p>点击选择<b>或者</b>拖拽到这里<b>或者</b>在此页面粘贴</p>
-        </div>
+  <div id="choose_img">
+    <input type="file" name="content" id="myFile" style="display: none" />
+    <img src="" id="img_pre_show" />
+    <div id="canvas_box" style="display:none"></div>
+    <div id="upload_hint">
+      <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+      <br />
+      <p>点击选择<b>或者</b>拖拽到这里<b>或者</b>在此页面粘贴</p>
     </div>
-    <br />
-    <!-- 消息 -->
-    <div id="msg">
-        <p id="tis2">请在此页面粘贴！ ☆⌒(*＾-゜)v THX!!</p>
-    </div>
-    <!-- 资源放置 -->
-    <div id="resource_box" class="resource_box"></div>
-    <!-- 上传按钮 -->
-    <button id="upload_btn" style="display:none; margin-top: 20px;">上传</button>
+  </div>
+  <br />
+  <!-- 消息 -->
+  <div id="msg">
+    <p id="tis2">请在此页面粘贴！ ☆⌒(*＾-゜)v THX!!</p>
+  </div>
+  <!-- 资源放置 -->
+  <div id="resource_box" class="resource_box"></div>
 
     <script>
-        document.getElementById('choose_img').addEventListener('click', function() {
-            document.getElementById('myFile').click();
+        document.getElementById('upload_button').addEventListener('click', function() {
+            document.getElementById('file_input').click();
         });
 
-        document.getElementById('myFile').addEventListener('change', function(event) {
-            const files = event.target.files;
-            if (files.length > 0) {
-                document.getElementById('upload_btn').style.display = 'block';
-            } else {
-                document.getElementById('upload_btn').style.display = 'none';
-            }
-        });
-
-        document.getElementById('upload_btn').addEventListener('click', function() {
-            const files = document.getElementById('myFile').files;
-            for (let i = 0; i < files.length; i++) {
-                // 这里可以添加上传逻辑，例如通过AJAX上传到服务器
-                console.log(`Uploading file: ${files[i].name}`);
+        document.getElementById('file_input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('img_pre_show').src = e.target.result;
+                    document.getElementById('img_pre_show').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
             }
         });
     </script>
-
 </body>
-
-
 </html>
+
+
