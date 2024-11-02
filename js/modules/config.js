@@ -1,6 +1,6 @@
 //configObj
 export default {
-  token: "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",
+  token: "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",
   userAndRepo: "wztu/wztu.github.io",
   branch: "master",
   path: "/img",
